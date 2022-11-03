@@ -1,0 +1,175 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* bg-color */
+.bg-white{
+    background-color: white;
+}
+.color-blue{
+    color: rgb(118, 196, 248);
+}
+.pos-relative{
+    position: relative;
+}
+.display-none{
+    display: none;
+}
+.display-block{
+    display: block;
+}
+.center{
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+
+}
+.posi-ora{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+input{
+    border: 1px solid rgb(104, 104, 104);
+    height: 100%;
+    margin: 2rem;
+    padding: 0.2rem;
+    background-color: rgb(241, 241, 241);
+}
+/* flexer */
+.flex{
+    display: flex;
+}
+.justify-between{
+    justify-content: space-between;
+}
+.align-center{
+    align-items: center;
+}
+.over-hidden{
+    overflow: hidden;
+}
+.over-y{
+    overflow-y: scroll;
+}
+.box{
+    height: 80px;
+    width: 100%;
+    padding: 0.5rem;
+}
+i{
+    font-size: 1.5rem;
+}
+/* container della webApp */
+.container{
+    height: 100vh;
+    padding: 2rem 5rem;
+}
+/* classe img piccola */
+.img-small{
+    height: 3.5rem;
+    width: 3.5rem;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+/* classe img grande */
+.img-big{
+    height: 2.5rem;
+    width: 2.5rem;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.img-small img, .img-big img{
+    width: 100%;
+}
+/* inizio nav */
+nav{
+    width: calc(100% / 3);
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+}
+.notifica{
+    background-color: rgb(82, 178, 243);
+}
+.cerca{
+    height: 60px;
+}
+.cerca input{
+    width: 90%;
+    padding: 10px;
+}
+.chats{
+    height: calc( 100% - ( 80px + 80px + 60px ));
+}
+.contatto:hover{
+    background-color: rgb(236, 234, 234);
+}
+.active{
+    background-color: rgb(219, 219, 219);
+}
+/* inizio main */
+main{
+    width: calc((100% / 3) * 2);
+}
+.message-wrapper{
+    background-image: url(../img/mine.jpg);
+    height: calc((100%) - (80px + 80px));
+}
+
+.message{
+    position: relative;
+    /* min-width: 40%; */
+    max-width: 60%;
+    font-size: 15px;
+    margin: 5px 5px;
+    padding: 15px 15px 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+.chat{
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 100%;
+}
+.message.sent{
+    background-color: rgb(171, 253, 151);
+    align-self: flex-end;
+    text-align: end;
+    flex-wrap: wrap;
+    position: relative;
+}
+.menu{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.menu span i{
+    font-size: 15px;
+}
+.menu-tendina div{
+    display: none;
+}
+.menu:hover .menu-tendina div{
+    display: block;
+    background-color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+.menu-tendina div:hover{
+    background-color: rgb(224, 219, 219);
+}
+footer input{
+    height: 40px;
+    width: 80%;
+}
+span i{
+    display: block;
+    margin: 0 10px;
+}
+.box.div{
+    margin: 0 10px;
+}

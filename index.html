@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div class="container flex over-hidden">
+            <!-- contacts -->
+            <nav class="over-hidden">
+                <!-- utente -->
+                <div class="box flex justify-between align-center">
+                    <div class="flex justify-between align-center">
+                        <div class="img-small">
+                            <img src="./img/avatar_io.jpg" alt="">
+                        </div>
+                        <h3>Sofia</h3>
+                    </div>
+                    <div>
+                        <span><i class="fa-solid fa-circle-notch"></i></span>
+                        <span><i class="fa-solid fa-message"></i></span>
+                        <span><i class="fa-solid fa-ellipsis-vertical"></i></span>
+                    </div>
+                </div>
+                <!-- notifica -->
+                <div class="notifica box flex align-center">
+                    <div class="img-big pos-relative bg-white">
+                        <span class="center color-blue"><i class="fa-solid fa-bell-slash"></i></span>
+                    </div>
+                    <div style="padding: 0 1rem ;">
+                        <div>
+                            <span><strong>Ricevi nuovi messaggi</strong></span>
+                        </div>
+                        <div>
+                            <span><a href="#">Attiva notifiche desktop</a></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- cerca -->
+                <div class="cerca flex align-center">
+                    <div>
+                        <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                    </div>
+                    <div>
+                        <input type="text" v-model.trim="searchTerm"  placeholder="Cerca o inizia una nuova chat">
+                    </div>
+                </div>
+                <!-- contatti -->
+                <div class="chats over-y"> 
+                    <!-- v-for="(m,index) in list" key= "index" -->
+                        <div :class="{'active' : index === chatCorrente}" v-for="(item,index) in filteredContacts" key= "item.id" @click="setChat(item.id)" class="flex justify-between align-center pos-relative contatto">
+                            <div class="flex align-center">
+                                <div id='img-contact' class="img-small">
+                                    <img :src="'./img/avatar' + item.avatar + '.jpg'" :alt="item.name">
+                                </div>
+                                <div>
+                                    <h3>{{ item.name }}</h3>
+                                    <h5>{{ item.messages[item.messages.length -1].message }}</h5>
+                                </div>
+                                
+                            </div>
+                            <div class="posi-ora">
+                                <h5>{{ item.messages[item.messages.length -1].date }}</h5>
+                            </div>
+                        </div>
+                    
+                </div>
+            </nav>
+            <!-- chat -->
+            <main class="over-hidden">
+                <!-- persona con cui si chatta -->
+                <div class="box flex justify-between align-center" >
+                    <div class="flex justify-between align-center">
+                        <div class="img-small">
+                            <img :src="'./img/avatar'+contacts[chatCorrente].avatar+'.jpg'" :alt="contacts[chatCorrente].name">
+                        </div>
+                        
+                        <div>
+                            <h3>{{contacts[chatCorrente].name}}</h3>
+                            <span>Ultimo accesso {{contacts[chatCorrente].messages[contacts[chatCorrente].messages.length -1].date}}</span>
+                        </div>
+                        
+                    </div>
+                    <div>
+                        <span><i class="fa-solid fa-circle-notch"></i></span>
+                        <span><i class="fa-solid fa-message"></i></span>
+                        <span><i class="fa-solid fa-ellipsis-vertical"></i></span>
+                    </div>
+                </div>
+                <div class="message-wrapper over-hidden">
+                    <div class="flex chat over-y">
+                        <div :class="message.status" v-for="(message, index) in contacts[chatCorrente].messages" :key="index" class="message">
+                            <p>{{message.message}}</p>
+                            <!-- <div class="menu">
+                                <span><i class="fa-solid fa-chevron-down"></i></span>
+                                <div class="menu-tendina">
+                                    <div @click="elimina(index)">
+                                        <span>elimina</span>
+                                    </div>
+                                    <div>
+                                        <span>informazioni</span>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <footer>
+                    <div class="box flex  align-center">
+                        <span><i class="fa-solid fa-face-smile"></i></span>
+                        <input type="text" v-model.trim="newmessage" @keyup.enter="sendMessage">
+                        <span :class="{'display-block' : newmessage == '', 'display-none' : newmessage != '' }"><i class="fa-solid fa-microphone"></i></span>
+                        <span :class="{'display-block' : newmessage != '', 'display-none' : newmessage == '' }" @click="sendMessage"><i class="fa-solid fa-paper-plane"></i></span>
+                    </div>
+                </footer>
+            </main>
+        </div>
+    </div>
+    <!-- js vue -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- js file -->
+    <script src="./js/script.js"></script>
+</body>
+</html>
