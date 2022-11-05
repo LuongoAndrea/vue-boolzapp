@@ -96,9 +96,9 @@
                     <div class="flex chat over-y">
                         <div :class="message.status" v-for="(message, index) in contacts[chatCorrente].messages" :key="index" class="message">
                             <p>{{message.message}}</p>
-                            <!-- <div class="menu">
-                                <span><i class="fa-solid fa-chevron-down"></i></span>
-                                <div class="menu-tendina">
+                            <div class="menu">
+                                <span @click="showOpt(index)"><i class="fa-solid fa-chevron-down"></i></span>
+                                <div class="menu-tendina" v-if="msgOpt.index === index && msgOpt.show">
                                     <div @click="elimina(index)">
                                         <span>elimina</span>
                                     </div>
@@ -106,7 +106,7 @@
                                         <span>informazioni</span>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                 </div>

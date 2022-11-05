@@ -5,6 +5,10 @@ createApp({
       chatCorrente: 0,
       newmessage:'',
       searchTerm:'',
+      msgOpt:{
+        index: null,
+        show: false
+      },
         contacts: [
             {
             id: 1,
@@ -226,15 +230,19 @@ createApp({
         this.contacts[this.chatCorrente].messages.push(newMessage);
       }, 1000)
     },
-    contattiRicerca(){
-      // const result = contacts.name.filter((word) =>{
-      //   word == listContatti;
-      // } );
-
-      // console.log(result);
+    showOpt(i){
+      if(i === this.msgOpt.index && this.msgOpt.show){
+        this.msgOpt.index = null;
+        this.msgOpt.show = false;
+      }
+      else{
+        this.msgOpt.index = i;
+        this.msgOpt.show = true;
+      }
+      
     },
     elimina(index){
-      // this.messages[index].message.splice(index, 1);
+      this.contacts[this.chatCorrente].messages.splice(index, 1);
     }
   },
 

@@ -121,13 +121,14 @@ main{
 
 .message{
     position: relative;
-    /* min-width: 40%; */
     max-width: 60%;
     font-size: 15px;
     margin: 5px 5px;
     padding: 15px 15px 20px;
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
+    text-align: end; 
+
 }
 .chat{
     flex-flow: column nowrap;
@@ -138,27 +139,33 @@ main{
 .message.sent{
     background-color: rgb(171, 253, 151);
     align-self: flex-end;
-    text-align: end;
+    text-align: start; 
     flex-wrap: wrap;
     position: relative;
 }
 .menu{
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
+    
 }
 .menu span i{
     font-size: 15px;
+    z-index: 1;
+}
+.menu-tendina{
+    position: absolute;
+    top: 20px;
+    left: 0;
+    z-index: 20;
 }
 .menu-tendina div{
-    display: none;
-}
-.menu:hover .menu-tendina div{
     display: block;
     background-color: white;
     padding: 10px;
     cursor: pointer;
+    text-align: start;
+    
 }
+
 .menu-tendina div:hover{
     background-color: rgb(224, 219, 219);
 }
