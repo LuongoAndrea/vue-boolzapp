@@ -210,24 +210,34 @@ createApp({
       }
       this.contacts[this.chatCorrente].messages.push(newSentMessage);
       this.newmessage = '';
+      this.$nextTick(()=>{
+        const el = this.$refs.msg[this.$refs.msg.length - 1];
+        el.scrollIntoView();
+      })
       setTimeout(()=>{
         const messaggiRandom= [
           'ok',
           'bene',
           'fantastico',
-          'va benissimo'
+          'va benissimo',
+          'ovvio',
+          'certamente'
         ];
         let random = Math.floor(Math.random() * (messaggiRandom.length));
         console.log(random)
         let messRandom = messaggiRandom[random];
         const d = new Date();
-        let data = d.toDateString();
+        let data = d.toLocaleString('it-IT');
         const newMessage = {
           date: data,
           message: messRandom,
           status: 'received'
         }
         this.contacts[this.chatCorrente].messages.push(newMessage);
+        this.$nextTick(()=>{
+          const el = this.$refs.msg[this.$refs.msg.length - 1];
+          el.scrollIntoView();
+        })
       }, 1000)
     },
     showOpt(i){
@@ -241,8 +251,15 @@ createApp({
       }
       
     },
-    elimina(index){
-      this.contacts[this.chatCorrente].messages.splice(index, 1);
+    elimina(i){
+      this.contacts[this.chatCorrente].messages.splice(i, 1);
+      this.msgOpt.index = null;
+      this.msgOpt.show = false;
+    },
+    getLastMessage(i){
+      if(this.contacts[i].messages.length > 0){
+        return this.contacts[i].messages[this.contacts[i].messages.length - 1].message.slice(0, 30) + ' ...'
+      }
     }
   },
 

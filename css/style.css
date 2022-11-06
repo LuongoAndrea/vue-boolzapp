@@ -1,3 +1,10 @@
+:root{
+    --backcolor: linear-gradient(180deg, #009688 17.18%, #009688 17.19%, #D8DBD5 17.2%);
+    --allert: #8EDAFC;
+    --action:#B1B1B1;
+    --bar:#F3EEEA;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -64,6 +71,7 @@ i{
 }
 /* container della webApp */
 .container{
+    background: var(--backcolor);
     height: 100vh;
     padding: 2rem 5rem;
 }
@@ -89,10 +97,10 @@ i{
 nav{
     width: calc(100% / 3);
     height: 100%;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--bar);
 }
 .notifica{
-    background-color: rgb(82, 178, 243);
+    background-color: var(--allert);
 }
 .cerca{
     height: 60px;
@@ -108,7 +116,7 @@ nav{
     background-color: rgb(236, 234, 234);
 }
 .active{
-    background-color: rgb(219, 219, 219);
+    background-color: var(--action);
 }
 /* inizio main */
 main{
@@ -137,6 +145,8 @@ main{
     height: 100%;
 }
 .message.sent{
+    min-width: 120px;
+
     background-color: rgb(171, 253, 151);
     align-self: flex-end;
     text-align: start; 
@@ -177,6 +187,22 @@ span i{
     display: block;
     margin: 0 10px;
 }
-.box.div{
+.bianco{
+    background-color: #F3EEEA;
+}
+footer.div{
     margin: 0 10px;
+   
+}
+.back-button{
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    main {
+        display: none;
+    }
+    nav{
+        width: 100%;
+    }
 }
